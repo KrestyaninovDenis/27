@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const Book = require('../models/user')
+const Book = require('../conn/book')
+const User = require('../conn/user')
+
 /*
 GET /api/user/login   страница с формой входа / регистрации
 GET /api/user/me      страница профиля
