@@ -1,7 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const Book = require('../models/book')
+//const Book = require('../models/book')
+
+const firstConnection = mongoose.createConnection(HostDb, {
+    user: UserDB,
+    pass: PasswordDB,
+    dbName: NameDB,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+firstConnection.model('Book', require('../models/book'));
+
+
 
 
 router.get('/', async (req, res) => {
