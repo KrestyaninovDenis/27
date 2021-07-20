@@ -27,7 +27,7 @@ const HostDb = process.env.DB_HOST || 'mongodb://localhost:27017/'
 
 async function start() {
     try {
-            await mongoose.connect(HostDb, {
+            await mongoose.createConnection(HostDb, {
             user: UserDB,
             pass: PasswordDB,
             dbName: NameDB,
