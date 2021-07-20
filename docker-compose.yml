@@ -11,16 +11,6 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME:-root}
       - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD:-password}
       - MONGO_INITDB_DATABASE=${DB_NAME:-todos_database}
-      
-  mongouser:
-    image: mongo
-    restart: always
-    expose:
-      - 27017
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${DB_USERNAME:-root}
-      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD:-password}
-      - MONGO_INITDB_DATABASE=${DB_NAME1:-users_database}
 
   mongo-express:
     image: mongo-express
