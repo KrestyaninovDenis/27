@@ -43,3 +43,9 @@ async function start() {
     }
 }
 start();
+
+
+const conn001 = mongoose.createConnection(process.env.MONGODB_URI);
+conn001.model('User', require('../schemas/user'));
+const conn002 = mongoose.createConnection(process.env.MONGODB_URI);
+conn002.model('PageView', require('../schemas/pageView'));
