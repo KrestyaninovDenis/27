@@ -3,7 +3,7 @@ const router = express.Router();
 
 //const Book = require('../models/book')
 const Book = require('../conn/book')
-const Book1 = require('../conn/user')
+const User = require('../conn/user')
 
 router.get('/', async (req, res) => {
     const book = await Book.find({});
@@ -26,13 +26,13 @@ router.post('/create', async (req, res) => {
     const newTodo = new Book({
         title, description, authors
     });
-    const newTodo1 = new Book1({
-        title, description, authors
+    const newUser = new User({
+        title, description
     });
 
     try {
         await newTodo.save();
-        await newTodo1.save();
+        await newUser.save();
         res.redirect('/book');
     } catch (e) {
         console.error(e);
