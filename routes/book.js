@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //const Book = require('../models/book')
-const Book = require('./conn')
+const Book = require('../conn')
 
 router.get('/', async (req, res) => {
     const book = await Book.find({});
