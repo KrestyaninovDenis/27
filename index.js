@@ -28,19 +28,17 @@ const HostDb = process.env.DB_HOST || 'mongodb://localhost:27017/'
 async function start() {
     try {
         
-//const conn = mongoose.createConnection(HostDb, {
-//    user: UserDB,
-//    pass: PasswordDB,
-//    dbName: NameDB,
-//    useNewUrlParser: true,
-//    useUnifiedTopology: true
-//});
+const conn = mongoose.createConnection(HostDb, {
+    user: UserDB,
+    pass: PasswordDB,
+    dbName: NameDB,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
-//conn.model('Book', require('./models/book'));
+conn.model('Book', require('./models/book'));
 //const conn002 = mongoose.createConnection(process.env.MONGODB_URI);
 //conn002.model('PageView', require('../schemas/pageView'));
-            
-await mongoose.connect('mongodb://root:<your passord here>@localhost:27017/testdb');
             
 /*          await mongoose.connect(HostDb, {
             user: UserDB,
