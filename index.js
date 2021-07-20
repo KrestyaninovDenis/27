@@ -36,7 +36,11 @@ const conn = mongoose.createConnection(HostDb, {
     useUnifiedTopology: true
 });
 
-conn.model('Book', require('./models/book'));
+
+const schema = new mongoose.Schema({ title: 'string', description: 'string', authors: 'string', favorite: 'string', fileCover: 'string', fileName: 'string', fileBook: 'string', date: 'string'});
+
+conn.model('Book', schema);
+
 //const conn002 = mongoose.createConnection(process.env.MONGODB_URI);
 //conn002.model('PageView', require('../schemas/pageView'));
             
