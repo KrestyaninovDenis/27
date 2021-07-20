@@ -11,15 +11,13 @@ POST /api/user/signup
 */
 router.get('/login', async (req, res) => {
     res.render("user/index", {
-        title: "Библиотека",
-        books: book,
+        title: "Библиотека"
     });
 });
-
+/*
 router.get('/me', (req, res) => {
     res.render("user/create", {
-        title: "Создание книги",
-        book: {},
+        title: "Создание книги"
     });
 });
 
@@ -35,7 +33,7 @@ router.post('/login', async (req, res) => {
         console.error(e);
     }
 });
-
+*/
 
 
 module.exports = router;
