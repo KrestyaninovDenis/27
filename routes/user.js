@@ -11,7 +11,7 @@ POST /api/user/signup
 */
 router.get('/login', async (req, res) => {
     res.render("user/index", {
-        title: "Библиотека"
+        title: "Регистрация"
     });
 });
 /*
