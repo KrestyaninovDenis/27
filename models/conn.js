@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema, model} = require('mongoose');
 
-const PORT = process.env.PORT || 3000;
+
 const UserDB = process.env.DB_USERNAME || 'root';
 const PasswordDB = process.env.DB_PASSWORD || 'qwerty12345';
 const NameDB = 'todos'
