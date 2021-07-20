@@ -34,6 +34,6 @@ const todoSchema = new Schema({
     }
 });
 
-module.exports = model('Book', todoSchema);
-
+//module.exports = model('Book', todoSchema);
+module.exports = todoSchema;
 

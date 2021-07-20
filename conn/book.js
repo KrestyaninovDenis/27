@@ -14,7 +14,6 @@ const conn = mongoose.createConnection(HostDb, {
     useUnifiedTopology: true
 });
 
-const sch = require('../models/book')
+const schema = require('../models/book')
 //const schema = new mongoose.Schema({ title: 'string', description: 'string', authors: 'string', favorite: 'string', fileCover: 'string', fileName: 'string', fileBook: 'string', date: 'string'});
-
-module.exports = conn.sch;
+module.exports = conn.model('Book', schema);
