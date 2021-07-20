@@ -44,7 +44,7 @@ async function start() {
 }
 start();
 */
-
+/*
 const firstConnection = await mongoose.createConnection(HostDb, {
     user: UserDB,
     pass: PasswordDB,
@@ -52,7 +52,7 @@ const firstConnection = await mongoose.createConnection(HostDb, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-
+*/
 
 
 app.listen(PORT, () => {
