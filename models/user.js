@@ -1,30 +1,10 @@
 const {Schema, model} = require('mongoose');
 const todoSchema1 = new Schema({
-    title: {
+    user: {
         type: String, 
         required: true,   
     },
-    description: {
-        type: String, 
-        default: "",   
-    },    
-    authors: {
-        type: String, 
-        default: "",   
-    },    
-    favorite: {
-        type: String, 
-        default: "",   
-    },    
-    fileCover: {
-        type: String, 
-        default: "",   
-    },    
-    fileName: {
-        type: String, 
-        default: "",   
-    },    
-    fileBook: {
+    password: {
         type: String, 
         default: "",   
     },

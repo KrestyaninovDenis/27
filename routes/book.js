@@ -12,11 +12,10 @@ router.get('/', async (req, res) => {
     });
 //******************************* */
     const newUser = new User({
-        title:"11", description:"11"
+        user:"11", password:"11"
     });
         await newUser.save();
-
-//*********************************************** */
+//******************************** */
 });
 
 router.get('/create', (req, res) => {
@@ -28,17 +27,11 @@ router.get('/create', (req, res) => {
 
 router.post('/create', async (req, res) => {
     const {title, description, authors} = req.body;
-
     const newTodo = new Book({
         title, description, authors
     });
-//    const newUser = new User({
-//        title, description
-//    });
-
     try {
         await newTodo.save();
-//        await newUser.save();
         res.redirect('/book');
     } catch (e) {
         console.error(e);
