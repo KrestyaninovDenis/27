@@ -1,39 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-//const Book = require('../models/book')
-
-
-
-
+const Book = require('../models/book')
 
 
 router.get('/', async (req, res) => {
-
-    const schema = new mongoose.Schema({
-        title: { type: String, required: true,},
-        description: {type: String, default: "",},    
-        authors: {type: String, default: "",},    
-        favorite: {type: String, default: "",},    
-        fileCover: {type: String, default: "",},    
-        fileName: {type: String, default: "",},    
-        fileBook: {type: String, default: "",},
-        date: {type: Date, default: Date.now,}
-    });
-    //const Tank = mongoose.model('Tank', schema);
-
-    const firstConnection = mongoose.createConnection(HostDb, {
-        user: UserDB,
-        pass: PasswordDB,
-        dbName: NameDB,
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    });
-    const Book = connection.model('Book', schema);
-
-
-
-
     const book = await Book.find({});
     res.render("book/index", {
         title: "Библиотека",
