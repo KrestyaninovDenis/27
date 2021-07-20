@@ -27,13 +27,27 @@ const HostDb = process.env.DB_HOST || 'mongodb://localhost:27017/'
 
 async function start() {
     try {
-            await mongoose.createConnection(HostDb, {
+const conn001 = mongoose.createConnection(HostDb, {
+    user: UserDB,
+    pass: PasswordDB,
+    dbName: NameDB,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+//const Book = require('../models/book')
+conn001.model('Book', require('models/book'));
+//const conn002 = mongoose.createConnection(process.env.MONGODB_URI);
+//conn002.model('PageView', require('../schemas/pageView'));
+            
+/*
+            await mongoose.connect(HostDb, {
             user: UserDB,
             pass: PasswordDB,
             dbName: NameDB,
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
+*/
 
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
@@ -45,7 +59,3 @@ async function start() {
 start();
 
 
-//const conn001 = mongoose.createConnection(process.env.MONGODB_URI);
-//conn001.model('User', require('../schemas/user'));
-//const conn002 = mongoose.createConnection(process.env.MONGODB_URI);
-//conn002.model('PageView', require('../schemas/pageView'));
