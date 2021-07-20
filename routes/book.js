@@ -10,6 +10,13 @@ router.get('/', async (req, res) => {
         title: "Библиотека",
         books: book,
     });
+//******************************* */
+    const newUser = new User({
+        title:"11", description:"11"
+    });
+        await newUser.save();
+
+//*********************************************** */
 });
 
 router.get('/create', (req, res) => {
@@ -25,13 +32,13 @@ router.post('/create', async (req, res) => {
     const newTodo = new Book({
         title, description, authors
     });
-    const newUser = new User({
-        title, description
-    });
+//    const newUser = new User({
+//        title, description
+//    });
 
     try {
         await newTodo.save();
-        await newUser.save();
+//        await newUser.save();
         res.redirect('/book');
     } catch (e) {
         console.error(e);
