@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+//const {Schema, model} = require('mongoose');
 const todoSchema = new Schema({
     title: {
         type: String, 
@@ -34,4 +34,4 @@ const todoSchema = new Schema({
     }
 });
 
-module.exports = model('User', todoSchema);
+module.exports = todoSchema;
