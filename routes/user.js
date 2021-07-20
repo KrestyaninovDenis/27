@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const Book = require('../conn/book')
 const User = require('../conn/user')
 
 /*
@@ -10,28 +9,25 @@ GET /api/user/me      страница профиля
 POST /api/user/login
 POST /api/user/signup
 */
-router.get('/', async (req, res) => {
-    const book = await Book.find();
-    res.render("book/index", {
+router.get('/login', async (req, res) => {
+    res.render("user/index", {
         title: "Библиотека",
         books: book,
     });
 });
 
-router.get('/create', (req, res) => {
-    res.render("book/create", {
+router.get('/me', (req, res) => {
+    res.render("user/create", {
         title: "Создание книги",
         book: {},
     });
 });
 
-router.post('/create', async (req, res) => {
+router.post('/login', async (req, res) => {
     const {title, description, authors} = req.body;
-
     const newTodo = new Book({
         title, description, authors
     });
-
     try {
         await newTodo.save();
         res.redirect('/book');
@@ -40,65 +36,6 @@ router.post('/create', async (req, res) => {
     }
 });
 
-
-router.get('/:id', async (req, res) => {
-    const {id} = req.params;
-    let book;
-    try {
-        book = await Book.findById(id);
-    } catch (e) {
-        console.error(e);
-        res.status(404).redirect('/404');
-    }
-
-    res.render("book/view", {
-        title: "Просмотр книги",
-        book: book,
-    });
-});
-
-router.get('/update/:id', async (req, res) => {
-    const {id} = req.params;
-    let book;
-    try {
-        book = await Book.findById(id);
-    } catch (e) {
-        console.error(e);
-        res.status(404).redirect('/404');
-    }
-
-    res.render("book/update", {
-        title: "Обновление книги",
-        book: book,
-    });
-});
-
-router.post('/update/:id', async (req, res) => {
-    const {id} = req.params;
-    const {title, description, authors} = req.body;
-
-    try {
-        await Book.findByIdAndUpdate(id, {title, description, authors});
-    } catch (e) {
-        console.error(e);
-        res.status(404).redirect('/404');
-    }
-
-    res.redirect(`/book/${id}`);
-});
-
-router.post('/delete/:id', async (req, res) => {
-    const {id} = req.params;
-
-    try {
-        await Book.deleteOne({_id: id});
-    } catch (e) {
-        console.error(e);
-        res.status(404).redirect('/404');
-    }
-
-    res.redirect(`/book`);
-});
 
 
 module.exports = router;
