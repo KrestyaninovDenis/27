@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const {Schema, model} = require('mongoose');
 
 const PORT = process.env.PORT || 3000;
