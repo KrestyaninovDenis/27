@@ -21,7 +21,7 @@ app.use(errorMiddleware);
 
 //******************************* PASSPORT */
 //подключение стратегии
-/*
+
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
     passport.use('local', new LocalStrategy({
@@ -35,6 +35,7 @@ const LocalStrategy  = require('passport-local').Strategy;
             return done(null, user) // `user` будет сохранен в `req.user`
             });
     }));
+    /*
 //Для того, чтобы сохранять или доставать пользовательские данные из сессии
 passport.serializeUser(function (user, cb) {
     cb(null, user.id)
