@@ -18,8 +18,8 @@ router.get('/login', async (req, res) => {
 router.post('/login', async (req,res) => {
     const {user, password} = req.body;
     try {
-        await newUser.save();
-        res.redirect('/user/login');
+        //await newUser.save();
+        //res.redirect('/user/login');
     } catch (e) {
         console.error(e);
     }

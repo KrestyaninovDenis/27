@@ -35,7 +35,7 @@ const LocalStrategy  = require('passport-local').Strategy;
             return done(null, user) // `user` будет сохранен в `req.user`
             });
     }));
-    /*
+    
 //Для того, чтобы сохранять или доставать пользовательские данные из сессии
 passport.serializeUser(function (user, cb) {
     cb(null, user.id)
@@ -46,6 +46,7 @@ passport.deserializeUser(function (id, cb) {
         cb(null, user)
     })
 })
+/*
 //подключить паспорт к экспрессу
 // Middlewares, которые должны быть определены до passport:
 app.use(express.cookieParser());
