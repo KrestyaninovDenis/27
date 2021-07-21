@@ -23,7 +23,7 @@ router.get('/create', async (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-    const {user, password} = req.body;
+    const {username, password} = req.body;
     const newUser = new User({
         user, password
     });
