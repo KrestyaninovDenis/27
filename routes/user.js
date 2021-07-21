@@ -17,12 +17,12 @@ router.get('/login', async (req, res) => {
 
 router.post('/login', async (req,res) => {
     const {user, password} = req.body;
-    try {
+    //try {
         //await newUser.save();
         //res.redirect('/user/login');
-    } catch (e) {
-        console.error(e);
-    }
+    //} catch (e) {
+    //    console.error(e);
+    //}
 })
 
 router.get('/create', async (req, res) => {
