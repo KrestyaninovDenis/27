@@ -21,6 +21,7 @@ app.use(errorMiddleware);
 
 //******************************* PASSPORT */
 //подключение стратегии
+/*
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
     passport.use('local', new LocalStrategy({
@@ -52,7 +53,7 @@ app.use(express.session({ secret: 'SECRET' }));
 // Passport:
 app.use(passport.initialize());
 app.use(passport.session());
-
+*/
 
 
 
