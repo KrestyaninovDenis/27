@@ -3,6 +3,7 @@ const router = express.Router();
 
 const User = require('../conn/user')
 
+const passport = require('passport');
 /*
 GET /api/user/login   страница с формой входа / регистрации
 GET /api/user/me      страница профиля
