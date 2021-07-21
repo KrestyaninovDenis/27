@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
         user, password
     });
     try {
-        await newTodo.save();
+        await newUser.save();
         res.redirect('/login');
     } catch (e) {
         console.error(e);
