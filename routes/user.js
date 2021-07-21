@@ -25,6 +25,9 @@ router.get('/login', async (req, res) => {
     //    console.error(e);
     //}
 //})
+
+
+/*
 router.post('/login',
   passport.authenticate(
     'local',
@@ -36,7 +39,7 @@ router.post('/login',
     console.log("req.user: ", req.user)
     res.redirect('/')
   })
-
+*/
 
 router.get('/create', async (req, res) => {
     res.render("user/index", {

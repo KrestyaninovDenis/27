@@ -47,6 +47,19 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
+
+app.post('/user/login',
+  passport.authenticate(
+    'local',
+    {
+      failureRedirect: '/login',
+    },
+  ),
+  function (req, res) {
+    console.log("req.user: ", req.user)
+    res.redirect('/')
+  })
 /**************************END */
 
 
