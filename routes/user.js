@@ -11,24 +11,24 @@ POST /api/user/signup
 */
 router.get('/login', async (req, res) => {
     res.render("user/index", {
+        title: "Вход"
+    });
+});
+
+router.get('/create', async (req, res) => {
+    res.render("user/index", {
         title: "Регистрация"
     });
 });
-/*
-router.get('/me', (req, res) => {
-    res.render("user/create", {
-        title: "Создание книги"
-    });
-});
-*/
-router.post('/login', async (req, res) => {
+
+router.post('/create', async (req, res) => {
     const {user, password} = req.body;
     const newUser = new User({
         user, password
     });
     try {
         await newUser.save();
-        res.redirect('/book');
+        res.redirect('/user/login');
     } catch (e) {
         console.error(e);
     }
