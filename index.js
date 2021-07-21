@@ -9,7 +9,7 @@ const userRouter = require('./routes/user')
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));//false
 app.set("view engine", "ejs");
 
 app.use('/', indexRouter);
@@ -49,9 +49,15 @@ passport.deserializeUser(function (id, cb) {
 
 //подключить паспорт к экспрессу
 // Middlewares, которые должны быть определены до passport:
-app.use(express.cookieParser());
-app.use(express.bodyParser());
-app.use(express.session({ secret: 'SECRET' }));
+//app.use(express.cookieParser());
+//app.use(express.bodyParser());
+//app.use(express.session({ secret: 'SECRET' }));
+/////////////////app.use(body-parser.urlencoded({ extended: true }))
+app.use(require('express-session')({
+  secret: 'SECRET',
+  resave: false,
+  saveUninitialized: false,
+}))
 // Passport:
 app.use(passport.initialize());
 app.use(passport.session());
