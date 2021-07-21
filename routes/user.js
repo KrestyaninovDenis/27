@@ -28,7 +28,7 @@ router.post('/login', async (req, res) => {
     });
     try {
         await newUser.save();
-        res.redirect('/login');
+        res.redirect('/book');
     } catch (e) {
         console.error(e);
     }

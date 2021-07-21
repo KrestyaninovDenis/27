@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const Book = require('../conn/book')
-const User = require('../conn/user')
 
 router.get('/', async (req, res) => {
     const book = await Book.find({});
