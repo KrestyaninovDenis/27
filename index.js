@@ -23,7 +23,7 @@ const db = require('./conn/user')
 function verify (user, password, done) {
   db.findOne(user, function (err, user) {
     if (err) { return done(err) }
-    if (!user) { return done(null, false) }
+    //if (!user) { return done(null, false) }
 
     //if (!db.users.verifyPassword(user, password)) { return done(null, false) }
 
@@ -47,7 +47,7 @@ passport.serializeUser(function (user, cb) {
 })
 
 passport.deserializeUser(function (id, cb) {
-  db.users.findById(id, function (err, user) {
+  db.findById(id, function (err, user) {
     if (err) { return cb(err) }
     cb(null, user)
   })
