@@ -48,11 +48,6 @@ passport.deserializeUser(function (id, cb) {
 })
 
 //подключить паспорт к экспрессу
-// Middlewares, которые должны быть определены до passport:
-//app.use(express.cookieParser());
-//app.use(express.bodyParser());
-//app.use(express.session({ secret: 'SECRET' }));
-/////////////////app.use(body-parser.urlencoded({ extended: true }))
 app.use(require('express-session')({
   secret: 'SECRET',
   resave: false,
