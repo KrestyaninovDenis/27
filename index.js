@@ -17,7 +17,7 @@ const LocalStrategy  = require('passport-local').Strategy;
         usernameField: 'user',
         passwordField: 'password'
     },  function (user, password, done) {
-            User.findOne({user:user},function(err,user){
+            User.users.findOne({user:user},function(err,user){
             if (err) { return done(err) }
             if (!user) { return done(null, false) }
             //if (!db.users.verifyPassword(user, password)) { return done(null, false) }
