@@ -6,7 +6,7 @@ const app = express();
 
 //******************************* PASSPORT */
 //подключение стратегии
-
+const User = require('./conn/user')
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
     passport.use('local', new LocalStrategy({
