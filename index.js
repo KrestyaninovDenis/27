@@ -21,9 +21,9 @@ app.use(errorMiddleware);
 
 //******************************* PASSPORT */
 //подключение стратегии
-var passport       = require('passport');
-var LocalStrategy  = require('passport-local').Strategy;
-    passport.use(new LocalStrategy({
+const passport       = require('passport');
+const LocalStrategy  = require('passport-local').Strategy;
+    passport.use('local', new LocalStrategy({
         usernameField: 'user',
         passwordField: 'password'
     },  function (username, password, done) {
