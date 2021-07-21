@@ -20,20 +20,19 @@ router.get('/me', (req, res) => {
         title: "Создание книги"
     });
 });
-
+*/
 router.post('/login', async (req, res) => {
-    const {title, description, authors} = req.body;
-    const newTodo = new Book({
-        title, description, authors
+    const {user, password} = req.body;
+    const newUser = new User({
+        user, password
     });
     try {
         await newTodo.save();
-        res.redirect('/book');
+        res.redirect('/login');
     } catch (e) {
         console.error(e);
     }
 });
-*/
 
 
 module.exports = router;

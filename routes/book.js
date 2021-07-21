@@ -11,10 +11,10 @@ router.get('/', async (req, res) => {
         books: book,
     });
 //******************************* */
-    const newUser = new User({
-        user:"11", password:"11"
-    });
-        await newUser.save();
+//    const newUser = new User({
+//        user:"11", password:"11"
+//    });
+//        await newUser.save();
 //******************************** */
 });
 

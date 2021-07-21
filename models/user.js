@@ -1,7 +1,8 @@
 const {Schema, model} = require('mongoose');
-const todoSchema1 = new Schema({
+const UserData = new Schema({
     user: {
         type: String, 
+        unique: true,
         required: true,   
     },
     password: {
@@ -14,4 +15,4 @@ const todoSchema1 = new Schema({
     }
 });
 
-module.exports = todoSchema1;
+module.exports = UserData;
