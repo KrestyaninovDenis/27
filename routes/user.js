@@ -16,31 +16,6 @@ router.get('/login', async (req, res) => {
     });
 });
 
-//router.post('/login', async (req,res) => {
- //   const {user, password} = req.body;
-    //try {
-        //await newUser.save();
-        //res.redirect('/user/login');
-    //} catch (e) {
-    //    console.error(e);
-    //}
-//})
-
-
-/*
-router.post('/login',
-  passport.authenticate(
-    'local',
-    {
-      failureRedirect: '/user/login',
-    },
-  ),
-  function (req, res) {
-    console.log("req.user: ", req.user)
-    res.redirect('/')
-  })
-*/
-
 router.get('/create', async (req, res) => {
     res.render("user/index", {
         title: "Регистрация"
