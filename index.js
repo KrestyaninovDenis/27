@@ -1,6 +1,6 @@
 const express = require ('express');
 const bodyParser = require ('body-parser');
-
+const app = express();
 
 
 
@@ -53,7 +53,7 @@ const errorMiddleware = require('./middleware/error');
 const indexRouter = require('./routes/index');
 const bookRouter = require('./routes/book');
 const userRouter = require('./routes/user')
-const app = express();
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));//false
