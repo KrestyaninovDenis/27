@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require('../conn/user')
 
 const passport = require('passport');
+const LocalStrategy  = require('passport-local').Strategy;
 /*
 GET /api/user/login   страница с формой входа / регистрации
 GET /api/user/me      страница профиля

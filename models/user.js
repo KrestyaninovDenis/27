@@ -7,10 +7,6 @@ const UserData = new Schema({
     password: {
         type: String, 
         default: "",   
-    },
-    date: {
-        type: Date, 
-        default: Date.now,   
     }
 });
 
