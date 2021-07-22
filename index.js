@@ -13,16 +13,16 @@ app.set("view engine", "ejs");
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
 
-passport.use(new LocalStrategy({
+passport.use('local', new LocalStrategy({
     usernameField: 'user',
     passwordField: 'password',
     passReqToCallback : true
   },
       function(username, password,done){
 
-        User.find({user:username}, (err,user) => {
+        User.findOne({user:username}, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
-        if (!user) { return done(null, false) }// ненашёл
+        if (!user) { return done(null, false, { message: 'ненашёл' }) }// ненашёл
         //ещё пароль надо проверить
         return done(null, user)
     });

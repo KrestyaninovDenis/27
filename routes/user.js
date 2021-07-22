@@ -17,10 +17,16 @@ router.get('/login', async (req, res) => {
 });
 
 router.post('/login',   
-    passport.authenticate('local', {    successRedirect: '/',
-                                        failureRedirect: '/login',
-                                        failureFlash: true })
-);
+    passport.authenticate('local', {    
+        failureRedirect: '/login',
+    },
+  ),
+  function (req, res) {
+    res.redirect('/')
+  })
+
+
+
 
 router.get('/create', async (req, res) => {
     res.render("user/index", {
