@@ -40,7 +40,7 @@ passport.deserializeUser(function (id, cb) {
   })
 
   app.use(require('express-session')({
-    secret: process.env.COOKIE_SECRET,
+    secret: "SECRET",
     resave: false,
     saveUninitialized: false,
   }))
