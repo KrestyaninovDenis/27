@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 
 
 //************************************************************ */
-const User = require('../conn/user')
+const User = require('./conn/user')
 
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
