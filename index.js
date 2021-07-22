@@ -10,6 +10,43 @@ app.set("view engine", "ejs");
 
 //************************************************************ */
 
+const passport       = require('passport');
+const LocalStrategy  = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy({
+    usernameField: 'user',
+    passwordField: 'password'
+  },
+      function(username, password,done){
+
+    await User.findOne({user:username}, (err,user) => {
+        if (err) { return done(err) } //ошибка обработки
+        if (!user) { return done(null, false, { message: 'ненашёл' }) }// ненашёл
+        //ещё пароль надо проверить
+        return done(null, user)
+    });
+}));
+/*
+// Конфигурирование Passport для сохранения пользователя в сессии
+passport.serializeUser(function (user, cb) {
+    cb(null, user.id)
+  })
+passport.deserializeUser(function (id, cb) {
+    db.users.findById(id, function (err, user) {
+      if (err) { return cb(err) }
+      cb(null, user)
+    })
+  })
+
+  app.use(require('express-session')({
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  }))
+  
+  app.use(passport.initialize())
+  app.use(passport.session()) 
+*/
 //************************************************************* */
 
 const errorMiddleware = require('./middleware/error');

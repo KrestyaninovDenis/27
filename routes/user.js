@@ -16,6 +16,12 @@ router.get('/login', async (req, res) => {
     });
 });
 
+router.post('/login',   
+    passport.authenticate('local', {    successRedirect: '/',
+                                        failureRedirect: '/login',
+                                        failureFlash: true })
+);
+
 router.get('/create', async (req, res) => {
     res.render("user/index", {
         title: "Регистрация"
