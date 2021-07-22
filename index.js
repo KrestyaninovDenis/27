@@ -31,7 +31,7 @@ passport.use('local', new LocalStrategy({
 
 // Конфигурирование Passport для сохранения пользователя в сессии
 passport.serializeUser(function (user, cb) {
-    cb(null, user.id)
+    cb(null, _id)
   })
 passport.deserializeUser(function (id, cb) {
     db.users.findById(id, function (err, user) {
