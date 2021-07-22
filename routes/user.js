@@ -31,7 +31,7 @@ router.get('/create', async (req, res) => {
 router.post('/create', async (req, res) => {
     const {username, password} = req.body;
     const newUser = new User({
-        user, password
+        user:username, password:password
     });
     try {
         await newUser.save();
