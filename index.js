@@ -20,9 +20,9 @@ passport.use(new LocalStrategy({
   },
       function(username, password,done){
 
-        User.findOne({user:username}, (err,user) => {
+        User.find({user:username}, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
-        if (!user) { return done(null, false, { message: 'ненашёл' }) }// ненашёл
+        if (!user) { return done(null, false) }// ненашёл
         //ещё пароль надо проверить
         return done(null, user)
     });
