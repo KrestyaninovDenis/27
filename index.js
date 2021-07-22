@@ -9,6 +9,7 @@ app.set("view engine", "ejs");
 
 
 //************************************************************ */
+const User = require('../conn/user')
 
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
@@ -18,7 +19,7 @@ passport.use('local', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback : true
   },
-      function(username, password,done){
+      function(username, password, done){
 
         User.findOne({user:username}, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
