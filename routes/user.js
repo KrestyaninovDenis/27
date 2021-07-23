@@ -36,14 +36,29 @@ router.post('/create', async (req, res) => {
         username:username, password:password
     });
     try {
-        await newUser.save();
-        passport.authenticate('local', {    successRedirect: '/',
-                                            failureRedirect: '/user/login'});
-//        res.redirect('/');
+        res.redirect('/');
     } catch (e) {
         console.error(e);
     }
 });
+
+router.get('/me', 
+function (req, res, next) {
+    if (!req.isAuthenticated || !req.isAuthenticated()) {
+      if (req.session) {
+        req.session.returnTo = req.originalUrl || req.url
+      }
+      return res.redirect('/user/login')
+    }
+    next()
+  },
+function (req, res) {
+    res.render("user/profil", { 
+        title: "Профиль",
+        user: req.user 
+    })
+});
+
 
 
 module.exports = router;
