@@ -25,7 +25,8 @@ router.post('/login',
 
 router.get('/create', async (req, res) => {
     res.render("user/index", {
-        title: "Регистрация"
+        title: "Регистрация",
+        user: req.user
     });
 });
 
