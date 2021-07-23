@@ -11,6 +11,8 @@ GET /api/user/me      страница профиля
 POST /api/user/login
 POST /api/user/signup
 */
+
+/*
 router.get('/login', async (req, res) => {
     res.render("user/index", {
         title: "Вход"
@@ -25,9 +27,29 @@ router.post('/login',
   function (req, res) {
     res.redirect('/')
   })
+*/
+router.get('/login',
+  function (req, res) {
+    res.render('login')
+  })
+
+router.post('/login',
+  passport.authenticate(
+    'local',
+    {
+      failureRedirect: '/login',
+    },
+  ),
+  function (req, res) {
+    console.log("req.user: ", req.user)
+    res.redirect('/')
+  })
 
 
 
+
+
+  
 
 router.get('/create', async (req, res) => {
     res.render("user/index", {
