@@ -20,7 +20,6 @@ passport.use('local', new LocalStrategy({
     passReqToCallback : false
   },
       function(username, password, done){
-
         User.findOne({username:username}, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
         if (!user) { return done(null, false, { message: 'ненашёл' }) }// ненашёл
@@ -40,63 +39,16 @@ passport.deserializeUser(function (_id, cb) {
     })
   })
 
-  app.use(require('express-session')({
+app.use(require('express-session')({
     secret: "SECRET",
     resave: false,
     saveUninitialized: false,
-  }))
+}))
   
-  app.use(passport.initialize())
-  app.use(passport.session()) 
+app.use(passport.initialize())
+app.use(passport.session()) 
   
 //************************************************************************* */
-
-// @see https://github.com/passport/express-4.x-local-example
-/*
-const db = require('./db')
-
-function verify (username, password, done) {
-  db.users.findByUsername(username, function (err, user) {
-    if (err) { return done(err) }
-    if (!user) { return done(null, false) }
-
-    if (!db.users.verifyPassword(user, password)) { return done(null, false) }
-
-    // `user` будет сохранен в `req.user`
-    return done(null, user)
-  })
-}
-
-const options = {
-  usernameField: 'username',
-  passwordField: 'password',
-  passReqToCallback: false,
-}
-
-//  Добавление стратегии для использования
-passport.use('local', new LocalStrategy(options, verify))
-
-// Конфигурирование Passport для сохранения пользователя в сессии
-passport.serializeUser(function (user, cb) {
-  cb(null, user.id)
-})
-
-passport.deserializeUser(function (id, cb) {
-  db.users.findById(id, function (err, user) {
-    if (err) { return cb(err) }
-    cb(null, user)
-  })
-})
-
-app.use(require('express-session')({
-  secret: 'SECRET',
-  resave: false,
-  saveUninitialized: false,
-}))
-
-app.use(passport.initialize())
-app.use(passport.session())
-*/
 //не переносить
 app.get('/login',
   function (req, res) {

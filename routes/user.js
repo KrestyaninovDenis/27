@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../conn/user')
-
 const passport = require('passport');
 /*
 GET /api/user/login   страница с формой входа / регистрации
@@ -10,7 +8,11 @@ GET /api/user/me      страница профиля
 POST /api/user/login
 POST /api/user/signup
 */
+/////////////////////////////////////////////////////////////////////////////////
 
+
+
+////////////////////////////////////////////////////////////////////////////////
 
 router.get('/login', async (req, res) => {
     res.render("user/index", {
