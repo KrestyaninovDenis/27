@@ -9,15 +9,11 @@ GET /api/user/me      страница профиля
 POST /api/user/login
 POST /api/user/signup
 */
-/////////////////////////////////////////////////////////////////////////////////
-
-
-
-////////////////////////////////////////////////////////////////////////////////
 
 router.get('/login', async (req, res) => {
     res.render("user/index", {
-        title: "Вход"
+        title: "Вход",
+        user: req.user
     });
 });
 

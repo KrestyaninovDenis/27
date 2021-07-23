@@ -12,7 +12,16 @@
                 <a class="nav-link" href="/user/create">Регистрация</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user/login">Вход</a>
+                
+
+
+                <% if (!user) { %>
+                    <a class="nav-link" href="/user/login">Вход</a>
+                <% } else { %>
+                    <a class="nav-link" href="/user/login">Привет, <%= user.username %></a>
+                <% } %>
+
+
             </li>
         </ul>
     </div>

@@ -20,8 +20,8 @@ passport.use('local', new LocalStrategy({
       function(username, password, done){
         User.findOne({username:username}, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
-        if (!user) { return done(null, false, { message: 'ненашёл' }) }
-        if (password !== user.password) { return done(null, false); }//ещё пароль надо проверить
+        if (!user) { return done(null, false) } //ничего не нашёл
+        if (password !== user.password) { return done(null, false); } //неверный пароль
         return done(null, user)
     });
 }));
