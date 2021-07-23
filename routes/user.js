@@ -41,12 +41,7 @@ router.post('/create', async (req, res) => {
     } catch (e) {
         console.error(e);
     }
-    next()
-},
-passport.authenticate('local', {    successRedirect: '/',
-                                        failureRedirect: '/user/login'})
-
-);
+});
 
 router.get('/me', 
 function (req, res, next) {
