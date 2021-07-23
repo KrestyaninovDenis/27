@@ -1,11 +1,11 @@
-//const express = require ('express');
+const express = require ('express');
 const bodyParser = require ('body-parser');
-//const app = express();
+const app = express();
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));//false
-app.set("view engine", "ejs");
+//app.set("view engine", "ejs");
 
 
 //************************************************************ */
@@ -53,7 +53,7 @@ passport.deserializeUser(function (id, cb) {
 
 // @see https://github.com/passport/express-4.x-local-example
 
-const express = require('express')
+//const express = require('express')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const db = require('./db')
@@ -96,12 +96,12 @@ passport.deserializeUser(function (id, cb) {
   })
 })
 
-const app = express()
+//const app = express()
 
 app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 
-app.use(require('body-parser').urlencoded({ extended: true }))
+//app.use(require('body-parser').urlencoded({ extended: true }))
 app.use(require('express-session')({
   secret: process.env.COOKIE_SECRET,
   resave: false,
