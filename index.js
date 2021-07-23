@@ -9,20 +9,19 @@ app.set("view engine", "ejs");
 
 
 //************************************************************ */
-/*
-const User = require('./conn/user')
 
+const User = require('./conn/user')
 const passport       = require('passport');
 const LocalStrategy  = require('passport-local').Strategy;
 
 passport.use('local', new LocalStrategy({
-    usernameField: 'user',
+    usernameField: 'username',
     passwordField: 'password',
     passReqToCallback : true
   },
       function(username, password, done){
 
-        User.findOne({user:username}, (err,user) => {
+        User.findOne({username:username}, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
         if (!user) { return done(null, false, { message: 'ненашёл' }) }// ненашёл
         //ещё пароль надо проверить
@@ -32,10 +31,10 @@ passport.use('local', new LocalStrategy({
 
 // Конфигурирование Passport для сохранения пользователя в сессии
 passport.serializeUser(function (user, cb) {
-    cb(null, _id)
+    cb(null, user._id)
   })
 passport.deserializeUser(function (id, cb) {
-    users.findById(id, function (err, user) {
+    users.findById(_id, function (err, user) {
       if (err) { return cb(err) }
       cb(null, user)
     })
@@ -49,12 +48,11 @@ passport.deserializeUser(function (id, cb) {
   
   app.use(passport.initialize())
   app.use(passport.session()) 
-*/
+  
+//************************************************************************* */
 
 // @see https://github.com/passport/express-4.x-local-example
-
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
+/*
 const db = require('./db')
 
 function verify (username, password, done) {
@@ -98,7 +96,7 @@ app.use(require('express-session')({
 
 app.use(passport.initialize())
 app.use(passport.session())
-
+*/
 //не переносить
 app.get('/login',
   function (req, res) {
