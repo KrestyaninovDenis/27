@@ -21,7 +21,7 @@ passport.use('local', new LocalStrategy({
         User.findOne({username:username}, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
         if (!user) { return done(null, false, { message: 'ненашёл' }) }
-        //if (!user.verifyPassword(password)) { return done(null, false); }//ещё пароль надо проверить
+        if (password !== user.password) { return done(null, false); }//ещё пароль надо проверить
         return done(null, user)
     });
 }));

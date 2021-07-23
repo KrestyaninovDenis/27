@@ -20,19 +20,10 @@ router.get('/login', async (req, res) => {
         title: "Вход"
     });
 });
-/*
-router.post('/login',   
-    passport.authenticate('local', {    
-        failureRedirect: '/login',
-    },
-  ),
-  function (req, res) {
-    res.redirect('/')
-  })
-*/
+
 router.post('/login',
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/user/login'})
+    passport.authenticate('local', {    successRedirect: '/',
+                                        failureRedirect: '/user/login'})
 );
 
 
