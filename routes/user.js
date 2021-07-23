@@ -37,11 +37,16 @@ router.post('/create', async (req, res) => {
     });
     try {
         await newUser.save();
-        res.redirect('/');
+        //res.redirect('/');
     } catch (e) {
         console.error(e);
     }
-});
+    next();
+},
+passport.authenticate('local', {    successRedirect: '/',
+                                        failureRedirect: '/user/login'})
+
+);
 
 router.get('/me', 
 function (req, res, next) {
@@ -61,5 +66,10 @@ function (req, res) {
 });
 
 
+router.post('/exit',
+function (req, res) {
+    req.logout()
+    res.redirect('/')
+  })
 
 module.exports = router;
