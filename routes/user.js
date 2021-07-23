@@ -61,7 +61,7 @@ function (req, res) {
 });
 
 
-router.post('/exit',
+router.get('/exit',
 function (req, res) {
     req.logout(),
     res.redirect('/')
