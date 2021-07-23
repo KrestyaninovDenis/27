@@ -103,7 +103,7 @@ app.set('view engine', 'ejs')
 
 //app.use(require('body-parser').urlencoded({ extended: true }))
 app.use(require('express-session')({
-  secret: process.env.COOKIE_SECRET,
+  secret: 'SECRET',
   resave: false,
   saveUninitialized: false,
 }))
@@ -152,11 +152,6 @@ app.get('/profile',
   function (req, res) {
     res.render('profile', { user: req.user })
   })
-
-// start app
-app.listen(process.env.NODE_PORT, () => {
-  console.log(`Example app listening at http://localhost:${process.env.NODE_PORT}`)
-})
 
 
 //************************************************************* */
