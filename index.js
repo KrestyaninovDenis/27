@@ -17,7 +17,7 @@ const LocalStrategy  = require('passport-local').Strategy;
 passport.use('local', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
-    passReqToCallback : true
+    passReqToCallback : false
   },
       function(username, password, done){
 
@@ -31,10 +31,10 @@ passport.use('local', new LocalStrategy({
 
 // Конфигурирование Passport для сохранения пользователя в сессии
 passport.serializeUser(function (user, cb) {
-    cb(null, user._id)
+    cb(null, user.id)
   })
 passport.deserializeUser(function (id, cb) {
-    users.findById(_id, function (err, user) {
+    users.findById(id, function (err, user) {
       if (err) { return cb(err) }
       cb(null, user)
     })
