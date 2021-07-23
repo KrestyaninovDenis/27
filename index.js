@@ -31,10 +31,10 @@ passport.use('local', new LocalStrategy({
 
 // Конфигурирование Passport для сохранения пользователя в сессии
 passport.serializeUser(function (user, cb) {
-    cb(null, user.id)
+    cb(null, user._id)
   })
-passport.deserializeUser(function (id, cb) {
-    users.findById(id, function (err, user) {
+passport.deserializeUser(function (_id, cb) {
+    users.findById(_id, function (err, user) {
       if (err) { return cb(err) }
       cb(null, user)
     })
