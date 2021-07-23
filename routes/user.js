@@ -63,7 +63,7 @@ function (req, res) {
 
 router.post('/exit',
 function (req, res) {
-    req.logout()
+    req.logout(),
     res.redirect('/')
   })
 
