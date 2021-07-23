@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const passport = require('passport');
-
 const User = require('../conn/user')
 /*
 GET /api/user/login   страница с формой входа / регистрации
@@ -21,7 +20,7 @@ router.get('/login', async (req, res) => {
         title: "Вход"
     });
 });
-
+/*
 router.post('/login',   
     passport.authenticate('local', {    
         failureRedirect: '/login',
@@ -30,8 +29,12 @@ router.post('/login',
   function (req, res) {
     res.redirect('/')
   })
-
-
+*/
+router.post('/login',
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/user/login',
+                                   failureFlash: true })
+);
 
 
 router.get('/create', async (req, res) => {

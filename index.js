@@ -1,14 +1,12 @@
 const express = require ('express');
 const bodyParser = require ('body-parser');
 const app = express();
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));//false
 app.set("view engine", "ejs");
 
 
-//************************************************************ */
+//__________________________________________________________________________________________________
 
 const User = require('./conn/user')
 const passport       = require('passport');
@@ -22,13 +20,12 @@ passport.use('local', new LocalStrategy({
       function(username, password, done){
         User.findOne({username:username}, (err,user) => {
         if (err) { return done(err) } //ошибка обработки
-        if (!user) { return done(null, false, { message: 'ненашёл' }) }// ненашёл
-        //ещё пароль надо проверить
+        if (!user) { return done(null, false, { message: 'ненашёл' }) }
+        if (!user.verifyPassword(password)) { return done(null, false); }//ещё пароль надо проверить
         return done(null, user)
     });
 }));
 
-// Конфигурирование Passport для сохранения пользователя в сессии
 passport.serializeUser(function (user, cb) {
     cb(null, user._id)
   })
@@ -48,27 +45,8 @@ app.use(require('express-session')({
 app.use(passport.initialize())
 app.use(passport.session()) 
   
-//************************************************************************* */
-//не переносить
-app.get('/login',
-  function (req, res) {
-    res.render('login')
-  })
+//_________________________________________________________________________________________________
 
-app.post('/login',
-  passport.authenticate(
-    'local',
-    {
-      failureRedirect: '/login',
-    },
-  ),
-  function (req, res) {
-    console.log("req.user: ", req.user)
-    res.redirect('/')
-  })
-
-
-//************************************************************* */
 
 const errorMiddleware = require('./middleware/error');
 const indexRouter = require('./routes/index');
@@ -81,5 +59,5 @@ app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Старт сервера на: ${PORT}`);
+    console.log(`START_SERVER - PORT: ${PORT}`);
 })
