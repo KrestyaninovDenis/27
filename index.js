@@ -99,7 +99,7 @@ app.use(require('express-session')({
 app.use(passport.initialize())
 app.use(passport.session())
 
-/*
+//не переносить
 app.get('/login',
   function (req, res) {
     res.render('login')
@@ -116,7 +116,7 @@ app.post('/login',
     console.log("req.user: ", req.user)
     res.redirect('/')
   })
-*/
+
 
 //************************************************************* */
 
