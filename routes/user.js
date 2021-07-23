@@ -32,8 +32,7 @@ router.post('/login',
 */
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/user/login',
-                                   failureFlash: true })
+                                   failureRedirect: '/user/login'})
 );
 
 
