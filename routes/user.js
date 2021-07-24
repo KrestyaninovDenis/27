@@ -37,8 +37,8 @@ router.post('/create', async (req, res) => {
     });
     try {
         await newUser.save();
-        var user = req.body;
         res.redirect('/user/login');
+        res.send('POST /login');
     } catch (e) {
         console.error(e);
     }
